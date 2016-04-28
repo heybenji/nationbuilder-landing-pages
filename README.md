@@ -1,2 +1,19 @@
 # nationbuilder-landing-pages
 Example files and documentation for implementing rich landing pages composed of subpages in NationBuilder.
+
+## Implementing the theme changes
+
+1. Upload the files inside the `theme-files` folder to your NationBuilder theme.
+2. Modify your NationBuilder theme's existing files in the `theme-modifications` folder according to the instructions in each file.
+
+Once you've put the files in place, and modified your theme's existing files, you can create your very own landing pages, complete with hover tiles for subpages that have child pages, and large excerpts for stand-alone subpages.
+
+## Creating a landing page in NationBuilder
+
+The basic concept is to create a parent page, and then create a series of subpages and child pages. So first you make the parent page and assign a special tag to it. Then add your subpages, and subpage children. Finally, you reorder them using NationBuilder's concept of draggable _Subnav pages._
+
+1. Create a new page with landing page layout, go to your NationBuilder's Dashboard and click _+ New page,_ and choose _Basic page._
+2. Once the page is created and add the tag `Layout: Landing Page` using the add tag button below the Author.
+3. Next choose the _Subpages_ tab and create a new subpage for each section that you want, and always leave the _Include in top nav_ option checked, as this is what allows you change the order in which the subpage tiles appear.
+4. Add a background for the subpage tiles. You add a background by selecting the _Settings_ tab for the subpage you’re editing, then the _Social media_ tab under that. Upload the image where it says _Thumbnail image for Facebook, etc._ and save.
+5. Once you’ve got all your sections, it’s time to order them. Edit the parent page that you created in step 1, and choose _Subpages_ from it's tabbed menu and then choose _Subnav pages._ Drag them into the order you want. It should save the order automatically.
