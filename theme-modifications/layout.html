@@ -1,0 +1,47 @@
+<!-- 
+  
+  INSTRUCTIONS FOR MODIFYING LAYOUT.HTML
+  ======================================
+  
+  There are two locations in the layout.html template file that need to be modified:
+  
+  1. Before the </head> tag (to add CSS to make the scrolling pages pretty)
+  2. Before the <body> tag (to detect and CSS classes for page tags)
+
+-->
+
+<!--
+
+  STEP 1: BEFORE THE </HEAD> TAG
+  ===========================
+  
+  Where you see the 
+  
+  </head>
+  
+  replace it with the code below:
+  
+-->
+
+  <link rel="stylesheet" href="subpages_as_landing_page.scss" type="text/css">
+</head>
+
+<!--
+
+  STEP 2: BEFORE THE BODY TAG
+  ===========================
+  
+  Where you see the 
+  
+  <body class="aware-theme v2-theme" ...
+  
+  replace it with the code below:
+  
+-->
+
+{% assign page_tags_list = "" %}
+{% for tag in page.tags %}
+  {% assign page_tags_list = tag.name | downcase | remove: ":" | remove: "-" | replace: " ","-" | append: " " | append: page_tags_list %}
+{% endfor %}
+
+<body class="aware-theme v2-theme {{ page.page_class_name }} {{ page_tags_list }} js {% if page.is_homepage? %}home{% endif %} {{ site.slug }}">
