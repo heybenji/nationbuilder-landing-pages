@@ -1,6 +1,9 @@
 // Define the spacing unit
 $spacing-unit: 24px;
 
+// Define the timing unit
+$timing-unit: 400ms;
+
 .landing-page {
   
   .landing-section {
@@ -34,4 +37,83 @@ $spacing-unit: 24px;
 
   }
   
+}
+
+// utilities
+
+%background-thumbnail {
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center top;
+}
+
+@mixin expand-to-fill-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+}
+
+// listings
+
+.list-item-title {
+  margin-top: 0;
+  margin-bottom: .5em;
+}
+
+.list-item-thumbnail {
+  @extend %background-thumbnail;
+  padding-top: 100%;
+  margin-bottom: 1em;
+}
+
+@media only screen and (min-width: 1025px) {
+  .landing-page .landing-section {
+    .list-item {
+      vertical-align: top;
+      position: relative;
+      margin-bottom: 1em;
+      overflow: hidden;
+      // fixed height blocks
+      &:before {
+        display: block;
+        content: "";
+        width: 100%;
+        padding-top: 100%;
+      }
+      .list-item-thumbnail {
+        @include expand-to-fill-container;
+        margin-bottom: 0;
+        padding-top: 0;
+        transition: all ease $timing-unit;
+      }
+      .list-item-content {
+        @include expand-to-fill-container;
+        background: rgba(0,0,0,.4);
+        color: #fff;
+        padding: 1em;
+        transition: all ease $timing-unit;
+        a {
+          color: #fff;
+          text-decoration: underline;
+        }
+        .list-item-excerpt {
+          opacity: 0;
+          transition: all ease $timing-unit;
+        }
+      }
+      &:hover {
+        .list-item-content {
+          background: rgba(0,0,0,.8);
+        }
+        .list-item-excerpt {
+          opacity: 1;
+        }
+        .list-item-thumbnail {
+          transform: scale(1.13) rotate(1deg);
+        }
+      }
+    }
+  }  
 }
