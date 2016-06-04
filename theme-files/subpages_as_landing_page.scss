@@ -16,7 +16,7 @@ $spacing-unit: 24px;
     line-height: $spacing-unit*1.25;
   }
   
-  @media only screen and (min-width: $breakpoint-desktop) {
+  @media only screen and (min-width: 1025px) {
 
     .landing-section {
       margin-bottom: $spacing-unit*3;
