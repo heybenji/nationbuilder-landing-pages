@@ -1,0 +1,34 @@
+.landing-page {
+  
+  .landing-section {
+    margin-bottom: $spacing-unit*2;
+  }
+  
+  .landing-section h3 {
+    margin-bottom: $spacing-unit;
+  }
+  
+  .landing-excerpt {
+    font-size: $spacing-unit;
+    line-height: $spacing-unit*1.25;
+  }
+  
+  @media only screen and (min-width: $breakpoint-desktop) {
+
+    .landing-section {
+      margin-bottom: $spacing-unit*3;
+    }
+    
+    .landing-section h3 {
+      font-size: $spacing-unit*2.5;
+      line-height: $spacing-unit*2.5;
+    }
+    
+    .landing-excerpt {
+      font-size: $spacing-unit*1.5;
+      line-height: ($spacing-unit*1.5)*1.25;
+    }
+
+  }
+  
+}
