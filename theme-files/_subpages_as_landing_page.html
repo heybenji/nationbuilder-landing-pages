@@ -1,0 +1,81 @@
+{% assign level1 = page %}
+
+<div class="landing-page row-fluid listing listing-type-{{ level1.slug }}">
+
+{% for child in level1.nav_children %}
+
+  {% assign level2 = child %}
+  
+  {% assign level2_tags_list = "" %}
+  {% for tag in level2.tags %}
+    {% assign level2_tags_list = tag.name | downcase | remove: ":" | remove: "-" | replace: " ","-" | append: " " | append: level2_tags_list %}
+  {% endfor %}
+    
+  {% if tags_list contains "layout-subpage-grid-4-columns" %}
+  <div class="landing-section list-item span3">
+  {% else %}
+  <div class="landing-section list-item">
+  {% endif %}
+    
+    
+    {% if level2.has_meta_image? %}
+    <div class="list-item-thumbnail" style="background-image: url({{ level2.meta_image_url }});"></div>
+    {% endif %}
+    
+    <h3 class="list-item-title">
+      <a href="{{ level2.url }}">
+      {{ level2.name }} 
+      {% if level2.has_children? %}<span class="indicator-more">&rsaquo;</span>{% endif %}
+      
+      </a>
+    </h3>
+  
+    <div class="landing-excerpt list-item-excerpt">{{ level2.excerpt }}</div>
+  
+    {% if level2.has_children? %}
+  
+    <div class="row-fluid listing listing-type-{{ level2.slug }}">
+      {% for child in level2.nav_children %}
+      {% assign level3 = child %}
+
+      {% assign level3_tags_list = "" %}
+      {% for tag in level3.tags %}
+        {% assign level3_tags_list = tag.name | downcase | remove: ":" | remove: "-" | replace: " ","-" | append: " " | append: level3_tags_list %}
+      {% endfor %}
+
+      {% if level3_tags_list contains "exclude-from-landing-pages" %}
+      {% else %}
+      
+      {% if level2_tags_list contains "layout-subpage-grid-4-columns" %}
+      <div class="list-item span3">
+      {% else %}
+      <div class="list-item span4">
+      {% endif %}
+      
+      <div class="list-item-thumbnail" style="{% if level3.has_meta_image? %}background-image: url({{ level3.meta_image_url }});{% endif %}"></div>
+      
+      <div class="list-item-content">
+      
+      {% if level2_tags_list contains "layout-scrolling" %}
+      <h4 class="list-item-title">{{ level3.name }}</h4>
+      {% else %}
+      <h4 class="list-item-title"><a href="{{ level3.url }}">{{ level3.name }}</a></h4>
+      {% endif %}
+      
+      <div class="list-item-excerpt">{{ level3.excerpt }}</div>
+      
+      </div><!--/list-item-content-->
+      
+      </div><!--/list-item-->
+      {% endif %}
+      {% endfor %}
+    </div><!--/listing-->
+
+    {% endif %}
+    
+  </div><!--/landing-section--> 
+
+    
+{% endfor %}
+
+</div><!--/landing-page-->
